@@ -1,0 +1,352 @@
+/* header  
+*/
+.center{
+    margin: 0px auto;
+}
+.header{
+    width: 1200px;
+    height: 55px;
+    background-color: white;
+   
+}
+.header li{
+    display: inline;
+    list-style-type: none;
+    padding-left: 30px;
+    padding-top: 0px;
+    height: 55px;
+    line-height: 55px;
+    
+   
+}
+.preferred{
+    font-family: BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.header a{
+    color:#8590A6;
+}
+.tab{
+    display: inline-block;
+}
+.search{
+    width: 300px;
+    border-radius: 20px;
+    height: 30px;
+    border: 0px;
+    background-color: #f6f6f6;
+    border: 1px solid #a7a2a2;
+    text-indent: 20px;
+
+}
+.outline{
+    border: 1px solid red;
+}
+.noBorder{
+    border: 0px;
+}
+.gap{
+    margin-left: 30px;
+}
+.search-icon{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: -40px;
+    z-index: 5;
+    vertical-align: middle;
+    
+
+}
+.collection{
+    width: 30px;
+    height:30px;
+    vertical-align: middle;
+    margin-left: 100px;
+
+
+}
+.care{
+    width: 25px;
+    height:25px;
+    vertical-align: middle;
+    margin-left:30px;
+}
+input:focus{
+    outline: none;
+}
+#searchPane{
+    width: 300px;
+    height: 300px;
+    background-color:white;
+    display: none;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+/* main */
+.main {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.Question-Title {
+    width:100%;
+    margin-bottom: 5px;
+    background-color: white;   
+}
+
+
+.QuestionTitle-Box {
+    margin-bottom: 10px;
+}
+
+.QuestionText-Box {
+    margin-bottom: 10px;
+}
+
+.QuestionTitle-BottomBar {
+    padding-bottom: 10px;
+    text-align: left;
+    margin-left: 270px;
+    padding: 10px;
+    display: flex;
+}
+
+
+.Question-Title h3 {
+    text-align: left;
+    margin-left: 270px;
+    margin-right: 500px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    padding: 10px;
+}
+
+.Question-Title p {
+    text-align: left;
+    margin-left: 270px;
+    margin-right: 500px;
+    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.Title-TextArea {
+    display: flex;
+    width:890px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    background-color: white; 
+    text-align: left;
+}
+.Title-TextArea h3{
+    color: black;
+    margin-left: 100px;
+    margin-top: 70px;
+}
+
+.Title-TextArea textarea {
+    border: 0;
+    border-radius:5px;
+    background-color:rgba(241,241,241,.98);
+    width: 355px;
+    height: 100px;
+    padding: 10px;
+    resize: none;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+} 
+
+.Title-TextArea input {
+    margin-top: 70px;
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.015);
+    cursor: pointer;
+    -webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    height: 32px;
+    width: 50px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: rgba(0,0,0,0.65);
+    background-color: #0084FF;
+    border-color: #d9d9d9;
+    margin-left: 40px;
+    color: white;
+    vertical-align: middle;
+    flex: 0.5;
+}
+
+.Container {
+    display: flex;
+    align-items: flex-start;
+    width: 890px;
+    margin: 0px auto;
+}
+
+.LeftSide{
+    width: 553px;
+    background-color: white;
+    margin-right: 5px;
+}
+.Comment-Bar {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-bottom: 5px solid #f0f2f7;
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+.Question {
+    margin-bottom: 1px;
+}
+.Question-Awnser {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 5px solid #f0f2f7;
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+
+.Question-BottomBar {
+    overflow: auto;
+}
+
+.Question-BottomBar span {
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+    vertical-align: middle;
+    color: black;
+}
+
+.User {
+    widows: 40px;
+    height: 40px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.none-text {
+    display: none;
+}
+
+.DisplayButton {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+}
+
+.thumbs_button{
+    width: 60px;
+    height: 25px;
+    text-align: center;
+    margin:5px auto;
+    color: #fbfbfb;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    transition: all 0.3s;
+    border-radius: 12px;
+    background-color: #0084FF;
+    border: 0;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+.thumbs_button:hover {
+    opacity:0.8;
+    font-size:15px;
+}
+
+.RightBar {
+    flex: 1;
+    background-color: white;
+}
+
+.AuthorBox {
+    flex: 1;
+    padding: 20px;
+    padding-left: 40px;
+    text-align: left;
+    border-bottom: 5px solid #f0f2f7;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+
+.Author-Message {
+    padding: 10px;
+
+}
+
+.Author-Message a:hover {
+    color: #0084FF;
+    font-weight: bold;
+}
+
+.Author-Message img {
+    height: 50px;
+    width: 50px;
+}
+.Author-Message a {
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+.Author-Message span {
+    vertical-align: middle;
+    font-size: 15px;
+    color: black;
+}
+.Author-Message span:hover {
+    color: #0084FF;
+}
+
+.Author-Message input {
+        line-height: 1.499;
+        position: relative;
+        display: inline-block;
+        font-weight: 400;
+        white-space: nowrap;
+        text-align: center;
+        background-image: none;
+        border: 1px solid transparent;
+        box-shadow: 0 2px 0 rgba(0,0,0,0.015);
+        cursor: pointer;
+        -webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
+        transition: all .3s cubic-bezier(.645, .045, .355, 1);
+        height: 32px;
+        width: 50px;
+        font-size: 14px;
+        border-radius: 4px;
+        color: rgba(0,0,0,0.65);
+        background-color: #fff;
+        border-color: #d9d9d9;
+        margin-left: 85px;
+        color: white;
+}
+.Author-Message input:hover {
+    height: 35px;
+    width: 55px;
+    font-size: 16px;
+}
+
+.Collection {
+    width: 30px;
+    height: 30px; 
+    flex: 1;
+    vertical-align: middle;
+    margin-left: 50px;
+}

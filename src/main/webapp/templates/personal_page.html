@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎 - 个人主页</title>
+    <style>
+        @import url("[[@{css/personal_page.css}]]");
+    </style>
+    <th:block th:include="common::imports"></th:block>
+</head>
+<body class="center" style="background: #f6f6f6;">
+<th:block th:include="common::header"></th:block>
+    <div id="content">
+        <div id="content_header">
+            <div id="content_header_bg_1"> 
+                <input type = "button" value = "切换背景2" onclick = "change_bg_2()" class="change_bg_button"><!--设置按键，点击切换背景-->
+            </div>
+            <div id="content_header_bg_2"> 
+                <input type = "button" value = "切换背景1" onclick = "change_bg_1()" class="change_bg_button"><!--设置按键，点击切换背景-->
+            </div>
+            <div id="content_header_person">
+                <div id="personal_id">
+                    <h2>USERNAME</h2>
+                </div>
+                <div id="edit_profile"> <!--跳转至个人资料编辑-->
+                    <input type = "button" value = "发帖子" onclick="window.open('write.html')">
+                    <input type = "button" value = "编辑个人资料" onclick = "change_edit()">
+                </div>
+            </div>
+            <div id="head_portrait">
+                <canvas id="cvs" width="168" height="168"></canvas><span class="btn upload">上传头像<input type="file" class="upload_pic" id="upload" /></span>
+            </div>
+            <script>
+                //获取上传按钮
+                var input1 = document.getElementById("upload");
+                    input1.addEventListener('change', readFile, false);
+     
+                function readFile() {
+                    var file = this.files[0]; //获取上传文件列表中第一个文件
+                    var reader = new FileReader(); //实例一个文件对象
+                    reader.readAsDataURL(file); //把上传的文件转换成url
+                    //当文件读取成功便可以调取上传的接口
+                    reader.onload = function(e) {
+     
+                        var image = new Image();
+                        // 设置src属性 
+                        image.src = e.target.result;
+                        var max = 200;
+                        // 绑定load事件处理器，加载完成后执行，避免同步问题
+                        image.onload = function() {
+                            // 获取 canvas DOM 对象 
+                            var canvas = document.getElementById("cvs");
+                            // 获取 canvas的 2d 环境对象, 
+                            var ctx = canvas.getContext("2d");
+                            // canvas清屏 
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(image, 0, 0, 200, 200);
+                        };
+                    }
+                };
+
+                ////////////////////////////////////
+                function change_edit() //点击《编辑个人资料》按键后隐藏个人信息，显示编辑栏。
+                {
+                    document.getElementById('card_myself').style.display = 'none';
+                    document.getElementById('card_following').style.display = 'block';
+                }
+
+                function back_myself(){ //点击提交按键后显示个人信息栏。
+                    document.getElementById('card_myself').style.display = 'block';
+                    document.getElementById('card_following').style.display = 'none';
+                }
+
+                function change_bg_2(){ //切换背景2
+                    document.getElementById('content_header_bg_2').style.display = 'block';
+                    document.getElementById('content_header_bg_1').style.display = 'none';
+                }
+                function change_bg_1(){ //切换背景1
+                    document.getElementById('content_header_bg_1').style.display = 'block';
+                    document.getElementById('content_header_bg_2').style.display = 'none';
+                }
+                //////////////////////////////////////
+
+                //////////////////////////////////////
+                function change_answers(){ //切换为回答
+                    document.getElementById('main_answers').style.display = 'block';
+                    document.getElementById('main_asks').style.display = 'none';
+                    document.getElementById('main_collections').style.display = 'none';
+                    document.getElementById('main_following').style.display = 'none';
+                }
+                function change_asks(){ //切换为提问
+                    document.getElementById('main_answers').style.display = 'none';
+                    document.getElementById('main_asks').style.display = 'block';
+                    document.getElementById('main_collections').style.display = 'none';
+                    document.getElementById('main_following').style.display = 'none';
+                }
+                function change_collections(){ //切换为收藏
+                    document.getElementById('main_answers').style.display = 'none';
+                    document.getElementById('main_asks').style.display = 'none';
+                    document.getElementById('main_collections').style.display = 'block';
+                    document.getElementById('main_following').style.display = 'none';
+                }
+                function change_following(){ //切换为关注
+                    document.getElementById('main_answers').style.display = 'none';
+                    document.getElementById('main_asks').style.display = 'none';
+                    document.getElementById('main_collections').style.display = 'none';
+                    document.getElementById('main_following').style.display = 'block';
+                }
+                /////////////////////////////////////////
+
+            </script>
+        </div>
+        <div id="profile_main">
+            <div id="profile_mainColumn">
+                <div id="profile_main_header"><!--回答 提问 收藏 关注 四个部分header，点击可跳转-->
+                    <div class="profile_main_header_1">
+                        <input type="button" value="回答" onclick="change_answers()" class="main_header" id="answers">
+                    </div>
+                    <div class="profile_main_header_1">
+                        <input type="button" value="提问" onclick="change_asks()" class="main_header" id="asks">
+                    </div>
+                    <div class="profile_main_header_1">
+                        <input type="button" value="关注" onclick="change_collections()" class="main_header" id="collections">
+                    </div>
+                    <div class="profile_main_header_1">
+                        <input type="button" value="收藏" onclick="change_following()" class="main_header" id="following">
+                    </div>
+                </div>
+                <hr id="line">
+                <div id="main_answers">
+                    <p class="main_list">我的回答</p>
+                    <p class="content_1">问题内容</p>
+                    <p id="content_answer">我的回答内容</p>
+                </div>
+                <div id="main_asks">
+                    <p class="main_list">我的提问</p>
+                    <p class="content_1">提问内容</p>
+                </div>
+                <div id="main_collections">
+                    <p class="main_list">我的收藏</p>
+                    <p class="content_1">收藏内容</p>
+                </div>
+                <div id="main_following">
+                    <p class="main_list">关注了</p>
+                    <p class="content_1">我关注的人</p><br>
+                    <p class="main_list">关注者</p>
+                    <p class="content_1">关注我的人</p>
+                </div>
+            </div>
+            <div id="profile_sideColumn">
+                <div class="card_myself" id="card_myself"><!--此处显示用户名-->
+                    <form action="" method="POST">
+                        <p>用户名: [[${user.name}]]</p><br>
+                        <p>出生日期: [[${T(utils.database.DateFormat).simpleDate(user.birth)}]]</p><br>
+                        <p>性别: [[${user.sex==false?"男":"女"}]]</p><br>
+                        <p>签名</p><br>
+                    </form>
+                </div>
+                <div class="card_myself" id="card_following"></a><!--编辑个人资料-->
+                    <form action="" method="POST">
+                        <input type="text" name="username" placeholder="用户名"><br>
+                        <input type="text" name="age" placeholder="年龄"><br>
+                        <input type="text" name="gender" placeholder="性别"><br>
+                        <input type="text" name="introduction" placeholder="签名"><br>
+                        </a><input type="submit" value="确定修改" onclick="back_myself()"><br>
+                    </form>
+                </div>
+                <div id="side_footer"><!--装饰用，不跳转-->
+                    <a class="footer_content" href="#">知乎指南</a>
+                    <a class="footer_content" href="#">知乎协议</a>
+                    <a class="footer_content" href="#">知乎隐私保护指引</a><br>
+                    <a class="footer_content" href="#">应用</a>
+                    <a class="footer_content" href="#">工作</a>
+                    <a class="footer_content" href="#">申请开通知乎机构号</a><br>
+                    <a class="footer_content" href="#">侵权举报</a>
+                    <a class="footer_content" href="#">网上有害信息举报专区</a><br>
+                    <a class="footer_content" href="#">京 ICP 证 110745 号</a><br>
+                    <a class="footer_content" href="#">京 ICP 备 13052560 号 - 1</a><br>
+                    <img src="img/police.png"><a class="footer_content" href="#">京公网安备 11010802010035 号</a><br>
+                    <a class="footer_content" href="#">互联网药品信息服务资格证书</a><br>
+                    <a class="footer_content" href="#">（京）- 非经营性 - 2017 - 0067</a><br>
+                    <a class="footer_content" href="#">违法和不良信息举报：010-82716601</a><br>
+                    <a class="footer_content" href="#">儿童色情信息举报专区</a><br>
+                    <a class="footer_content" href="#">证照中心</a><br>
+                    <a class="footer_content" href="#">联系我们 © 2021 知乎</a><br>
+                </div>
+            </div>    
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+

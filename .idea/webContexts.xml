@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/templates/common.html" value="file://$PROJECT_DIR$/src/main/webapp/templates" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/templates/index.html" value="file://$PROJECT_DIR$/src/main/webapp/templates" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/templates/personal_page.html" value="file://$PROJECT_DIR$/src/main/webapp/templates" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/templates/post.html" value="file://$PROJECT_DIR$/src/main/webapp/templates" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/templates/register.html" value="file://$PROJECT_DIR$/src/main/webapp/templates" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/templates/write.html" value="file://$PROJECT_DIR$/src/main/webapp/templates" />
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,199 @@
+
+/* main */
+
+.main {
+    text-align: center;
+    width: 891px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.main li{
+    display: inline;
+    list-style-type: none;
+    padding-left: 30px;
+    padding-top: 0px;
+    height: 55px;
+    line-height: 55px;
+    
+}
+.main a {
+    text-decoration: none;
+    vertical-align: middle;
+    height: 58px;
+    color:#8590A6;
+}
+
+.main a:hover {
+    opacity:0.8;
+    color: #0084FF;
+}
+
+/* 帖子区域 */
+
+.Top-Container {
+    display: flex;
+    align-items: flex-start;
+    width: 890px;
+    margin: 0px auto;
+}
+.Top-mainColumn {
+    margin-right: 10px;
+    margin-bottom: 0;
+    width: 694px;
+    height: 100%;
+    background-color: white;
+}
+.Top-mainColumnCard {
+    -webkit-box-shadow: 0 1px 3px rgba(18,18,18,.1);
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+
+.Top-Care {
+    width: 25px;
+    height:25px;
+    vertical-align: middle;
+}
+.Top-Collection {
+    width: 25px;
+    height:25px;
+    vertical-align: middle;
+}
+
+.Top-Menu {
+    display: flex;
+    height: 58px;
+}
+.Top-nav {
+    flex: 1;
+    border-bottom: 1px solid #f0f2f7;
+    text-align: left;
+}
+.Top-Content {
+    flex: 1;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+.Top-ContentItem {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 5px solid #f0f2f7;
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+.Top-ContentText {
+    overflow: auto;
+}
+
+.Top-ContentItem a{
+    color: black;
+}
+
+.DisplayButton {
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    color: black;
+    vertical-align: middle;
+}
+.DisplayButton-Comment{
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    color: black;
+    font-size: 15px;
+    vertical-align: center;
+}
+.DisplayButton-Comment :hover{
+    font-size: 18px;
+    color: #0084FF;
+}
+
+
+.User {
+    widows: 40px;
+    height: 40px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin: 10px;
+}
+
+.Top-ContentBottomBar {
+    overflow: auto;
+}
+.Top-ContentBottomBar span {
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+    vertical-align: middle;
+}
+.none-text {
+    display: none;
+}
+
+.thumbs_button{
+    width: 60px;
+    height: 25px;
+    text-align: center;
+    margin:5px auto;
+    color: #fbfbfb;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    transition: all 0.3s;
+    border-radius: 12px;
+    background-color: #0084FF;
+    border: 0;
+    font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+.thumbs_button:hover {
+    opacity:0.8;
+    font-size:15px;
+}
+
+.Top-ContentItem h3 {
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.Top-ContentItem a {
+    margin: 0;
+}
+
+.Top-ContentItem p {
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+/* 侧边栏 */
+
+.SideBar {
+    flex: 1;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    height: 100%;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+
+.MenuBlock {
+    flex: 1;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}
+.SideBar a {
+    margin-bottom: 50px;
+}
+.SideBar ul{
+    padding: 20px;
+    margin: 0;
+}
+.SideBar li {
+    display: block;
+    text-align: center;
+    padding: 0;
+}
+
+.Card {
+    flex: 1;
+    margin-bottom: 0;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(18,18,18,.1);
+}

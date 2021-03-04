@@ -1,0 +1,65 @@
+
+/*article*/
+.mainboard {
+    width: 891px;
+    height: 100%;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+}
+
+.InvitationTitle-Box {
+    flex: 1;
+    width: 100%;
+}
+
+.InvitationTitle-Field {
+    background-color: rgba(255,255,255,0);
+    width: 65%;
+    height: 80px;
+    font-size: 40px;
+    text-align: center;
+    resize: none;
+    flex: 1;
+    font-family: BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+.Invitation-Box {
+    flex: 1;
+    width: 100%;
+}
+
+.Invitation-Field {
+    background-color: rgba(255,255,255,0);
+    width: 65%;
+    height: 500px;
+    font-size: 18px;
+    text-align: left;
+    resize: none;
+    flex: 1;
+    font-family: BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+.Submit-Button {
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.015);
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    height: 32px;
+    width: 50px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: rgba(0,0,0,0.65);
+    background-color: #0084FF;
+    border-color: #d9d9d9;
+    color: white;
+}
+

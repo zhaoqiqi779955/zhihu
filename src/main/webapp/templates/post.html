@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帖子</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/post.css}">
+    <th:block th:insert="common::imports"></th:block>
+    <style>
+        .showPart{
+
+            width: 200px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            background: goldenrod;
+            white-space: nowrap;/*加宽度width属来兼容部分浏览*/
+        }
+    </style>
+</head>
+<body class="center" style="background: #f6f6f6;">
+    <th:block th:insert="common::header"></th:block>
+    <article>
+        <div class="main">    
+            <!-- 标题栏 -->
+            <div class="Question-Title">
+                <div class="QuestionTitle-Box">
+                    <h3 th:text="${post.title}">淘宝有什么平价又新颖的礼物？</h3>
+                    <p th:text="${post.content}">惊呆了！原来还有这么可爱又平价的小礼物！</p>
+                </div>
+                <div class="QuestionTitle-BottomBar">
+                    <form action="#">
+                        <input type="button" class="thumbs_button" onclick="" value="赞同">
+                        <input type="button" class="thumbs_button" onclick="" value="反对">
+                        <input type="image"  src="img/collection.png" class="Collection">收藏
+                    </form>
+                </div>
+            </div>
+            <div class="Title-TextArea">
+                <h3>发表你的看法吧！</h3>
+                <form action="" style="display: flex;">
+                    <textarea id="comment"></textarea>
+                    <input type="button" value="发布" onclick="my.deliver()">
+                </form>
+            </div>
+            <div class="Container">
+                <div class="LeftSide">
+                    <div class="Comment-Bar">
+                        <h3>评论区</h3>
+                    </div>
+                    <!-- 帖子列表(动态设置id看不懂，先复制了填充内容) -->
+                    <div class="Question-AwnserBox">
+                        <div class="Question-Awnser" th:each="comment:${post.commentList}">
+                            <p th:text="${comment.words}">惊呆了！</p>
+<!--                            <p id="none-text" class="none-text">原来还有这么可爱又平价的小礼物！</p>-->
+                            <div class="Question-BottomBar">
+                                <form action="#">
+                                    <input type="button" class="thumbs_button" onclick="" value="赞同">
+                                    <input type="button" class="thumbs_button" onclick="" value="反对">
+                                    <img th:src="@{/photo(id=${comment.userID})}" class="User"><span th:text="${comment.userName}">username</span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 右侧栏 -->
+                <div class="RightBar">
+                    <div class="AuthorBox">
+                        <h3>关于作者</h3>
+                        <div class="Author-Message">
+                            <a href=""><img th:src="@{/photo(id=${post.author_id})}" alt=""></a>
+                            <a href="" style="margin-left: 30px;" th:text="${name}">李鑫</a><br>
+                            <div style="display: inline-block;">
+                                <a href="" style="margin: 20px;"><span>回答</span></a><br>
+                                <a href="" style="margin: 20px; margin-top: 0; text-align: center; display: block;"><span>0</span></a>
+                            </div>
+                            <div style="display: inline-block;">
+                                <a href="" style="margin: 20px;"><span>帖子</span></a><br>
+                                <a href="" style="margin: 20px; margin-top: 0; text-align: center; display: block;"><span>0</span></a>
+                            </div>
+                            <div style="display: inline-block;">
+                                <a href="" style="margin: 20px;"><span>关注者</span></a><br>
+                                <a href="" style="margin: 20px; margin-top: 0; text-align: center; display: block;"><span>0</span></a>
+                            </div>
+                            <form action="">
+                                <input type="button" style="background-color: #0084FF;" value="关注">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <script>
+        var  my={};
+        my.deliver=function (){
+            var  req={};
+            req.comment=$("#comment").val().trim();
+            req.post_id=[[${post.post_id}]];
+            Af.rest('[[@{/comment.do}]]', req, function (data) {
+                layer.msg('成功', {
+                    time: 1000,
+                    end: function () {
+                        var node="  <div class=\"Question-Awnser\" >\n" +
+                            "                            <p >"+req.comment+"</p>\n" +
+                            "                            <div class=\"Question-BottomBar\">\n" +
+                            "                                <form action=\"#\">\n" +
+                            "                                    <input type=\"button\" class=\"thumbs_button\" onclick=\"\" value=\"赞同\">\n" +
+                            "                                    <input type=\"button\" class=\"thumbs_button\" onclick=\"\" value=\"反对\">\n" +
+                            "                                    <img src=\"[[@{/photo(id=${session.userID})}]]\" class=\"User\"><span>[[${session.userName}]]</span>\n" +
+                            "                                </form>\n" +
+                            "                            </div>\n" +
+                            "                        </div>"
+                        $(".Question-AwnserBox").append(node);
+                    }
+                })
+            },function (error,reason){
+                layer.msg (reason,{
+                    time:1000,
+                    end:function (){
+                            location.href='[[@{/login}]]';
+
+                    }
+                })
+            })
+        }
+    </script>
+</body>
+</html>

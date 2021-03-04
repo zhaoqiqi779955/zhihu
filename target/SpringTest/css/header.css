@@ -1,0 +1,89 @@
+.center{
+    margin: 0px auto;
+}
+.header{
+    width: 1200px;
+    height: 55px;
+    background-color: white;
+
+
+}
+.header li{
+    display: inline;
+    list-style-type: none;
+    padding-left: 30px;
+    padding-top: 0px;
+    height: 55px;
+    line-height: 55px;
+
+
+}
+.preferred{
+    font-family: BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+}
+a{
+    text-decoration: none;
+}
+.header a{
+    color:#8590A6;
+}
+.tab{
+    display: inline-block;
+}
+.search{
+    width: 300px;
+    border-radius: 20px;
+    height: 30px;
+    border: 0px;
+    background-color: #f6f6f6;
+    border: 1px solid #a7a2a2;
+    text-indent: 20px;
+
+}
+.noBorder{
+    border: 0px;
+}
+.gap{
+    margin-left: 30px;
+}
+.search-icon{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    left: -40px;
+    z-index: 5;
+    vertical-align: middle;
+
+
+}
+.collection{
+    width: 30px;height:30px;
+    vertical-align: middle;
+    margin-left: 100px;
+
+
+}
+.care{
+    width: 25px;height:25px;
+    vertical-align: middle;
+    margin-left:30px;
+}
+input:focus{
+    outline: none;
+}
+#searchPane{
+    width: 300px;
+    height: 300px;
+    background-color:white;
+    display: none;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 10px 10px 5px #888888;
+}
+#searchPane a:hover{
+    color: blue;
+}
+body{
+    background: #f6f6f6;
+    margin: 0px auto;
+}

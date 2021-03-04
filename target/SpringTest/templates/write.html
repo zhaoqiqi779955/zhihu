@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>发帖子</title>
+        <link rel="stylesheet" type="text/css" th:href="@{css/write.css}">
+        <th:block th:include="common::imports"></th:block>
+    </head>
+    <body class="center" style="background: #f6f6f6;">
+        <th:block th:include="common::header"></th:block>
+        <article>
+            <div class="mainboard">
+                <form action="">
+                    <div class="InvitationTitle-Box">
+                        <textarea  id="title" class="InvitationTitle-Field" name="Title" placeholder="请输入标题"></textarea>
+                    </div>
+                    <div class="Invitation-Box">
+                        <textarea id="content" class="Invitation-Field" name="Text" placeholder="请输入正文"></textarea>
+                    </div>
+                    <div class="Submit-Box">
+                        <input class="Submit-Button" type="button" value="发布" onclick="my.submit()">
+                    </div>
+
+                </form>
+            </div>
+        </article>
+    </body>
+    <script>
+        my={};
+        my.submit=function ()
+        {
+            var req={};
+            req.title=$("#title").val().trim();
+            req.content=$("#content").val().trim();
+            Af.rest('[[@{/write.do}]]', req, function (data) {
+                layer.msg('成功', {
+                    time: 1000,
+                    end: function () {
+                        location.href = '[[@{/index}]]';
+                    }
+                })
+            })
+        }
+    </script>
+</html>

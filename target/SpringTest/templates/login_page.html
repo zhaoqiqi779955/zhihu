@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>知乎 - 有问题，上知乎</title>
+        <link rel="stylesheet" th:href="@{/css/login_style.css?v=1.0}" />
+        <script th:src="@{/js/jquery.min.js}" ></script>
+        <script th:src="@{/js/afquery.js}" ></script>
+        <script th:src="@{/layer/layer.js}" ></script>
+
+    </head>
+    <body>
+        <div id="all">
+            <img id="zhihu_logo" src="zhihu_logo.png">
+            <div id="login">
+                <div id="login_1">
+                    <p style="font-size: 20px; margin: 0;"><a class="login_button" href="#">密码登录</a></p>
+                </div>
+                <div id="login_form">
+                    <form class="form" action="" method="POST"> <!--传递账号信息至数据库-->
+                        <input type="text" class="userID" name="username" placeholder="账号或邮箱"><br>
+                        <input type="password" class="password" name="password" placeholder="密码"><br>
+                        <div style="margin: 10px;">
+                            <!--<a class="login_button" href="" style="float: left;">邮箱账号登录</a>-->
+                            <a class="login_button" href="#" style="float: right;">忘记密码？</a><br>
+                        </div>
+                        <input type="button" value="注册/登录" onclick="my.login()">
+                    </form>
+                </div>
+            </div>
+            <div id="footer"><!--以下链接不用跳转，装饰用-->
+                <div>
+                    <a class="footer_content" href="#">知乎专栏</a>
+                    <a class="footer_content" href="#">圆桌</a>
+                    <a class="footer_content" href="#">移动应用</a>
+                    <a class="footer_content" href="#">联系我们</a>
+                    <a class="footer_content" href="#">来知乎工作</a>
+                    <a class="footer_content" href="#">注册机构号</a>
+                </div>
+                <div>
+                    <span class="footer_content">© 2019 知乎</span>
+                    <a class="footer_content" href="#">京 ICP 证 110745 号</a>
+                    <a class="footer_content" href="#">京公网安备 11010802010035 号</a>
+                    <a class="footer_content" href="#">出版物经营许可证</a>
+                </div>
+                <div>
+                    <a class="footer_content" href="#">侵权举报</a>
+                    <a class="footer_content" href="#">网上有害信息举报专区</a>
+                    <a class="footer_content" href="#">儿童色情信息举报专区</a>
+                    <span class="footer_content">违法和不良信息举报：010-82716601</span>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        var my = {};
+        var isrigh=true;
+        my.login = function(){
+            if(isrigh==true) {
+                var req = {};
+                req.userID = $('.form .userID').val().trim();
+                req.password = $('.form .password').val().trim();
+
+                Af.rest('[[@{/login.do}]]', req, function (data) {
+                    layer.msg('成功', {
+                        time: 1000,
+                        end: function () {
+                           location.href="[[@{/index}]]";
+                        }
+                    })
+                },function (error,reason)
+                {
+                    layer.msg(reason, {
+                        time: 1000,
+                        end: function () {
+                            if(error==-1){
+                                location.href="[[@{/register}]]";
+                            }
+                            else  location.href="[[@{/index}]]";
+                        }
+                    });
+
+                    isrigh=false;
+                    my.change();
+                })
+            }
+            else {
+                layer.msg ('请输入验证码',{
+                        time:1000,
+                        end:function (){
+
+                        }
+                    }
+                )
+            }
+
+        }
+        my.change=function ()
+        {
+            var des='[[@{/code}]]';
+
+
+        }
+        my.verify= function ()
+        {
+            var req = {};
+            req.code = $('.form .code').val().trim();
+            Af.rest('[[@{/code.do}]]', req, function(data){
+                isrigh=true;
+                layer.msg ('正确',{
+                    time:1000,
+                    end: function(){
+
+
+                    }
+                })
+            },function (data1,data2){
+                layer.msg ('验证错误',{
+                    time:1000,
+                    end: function(){
+                        isrigh=false;
+                        my.change();
+                    }
+                })
+            })
+        }
+
+    </script>
+</html>

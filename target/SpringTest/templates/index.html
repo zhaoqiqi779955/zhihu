@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <th:block th:include="common::imports"></th:block>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+<body>
+ <th:block th:insert="~{common::header}"></th:block>
+ <main class="main">
+     <!-- 帖子区域 -->
+     <div class="Top-Container">
+         <div class="Top-mainColumn">
+             <div class="Top-mainColumnCard">
+                 <div class="Top-Menu">
+                     <nav class="Top-nav">
+                         <ul class="tab" style="margin: 0px;padding: 0px;">
+                             <li>
+                                 <a href="#" style="color: #0084FF;">推荐</a>
+                             </li>
+                             <li>
+                                 <a href="#">关注</a>
+                             </li>
+                             <li>
+                                 <a href="#">热榜</a>
+                             </li>
+                         </ul>
+                     </nav>
+                 </div>
+             </div>
+             <!-- 帖子列表(不知道动态设置ID的方法) -->
+
+             <div class="Top-Content">
+                 <div class="Top-ContentItem"  th:each="post,stat:${posts}">
+                     <div class="Top-ContentText">
+                         <a th:href="@{/post(id=${post.post_id})}"><h3 th:text="${post.title}">淘宝有什么平价又新颖的礼物？</h3></a>
+                         <SPAN th:text="${#strings.substring(post.content,0,#strings.length(post.content)>15?15:#strings.length(post.content))}">惊呆了！</SPAN>
+                         <input type="button" th:onclick="displaytext([[${stat.index}]])" value="阅读全文..." class="DisplayButton">
+                         <!-- 未显示字段 -->
+                         <p th:id="${stat.index}" class="none-text" th:text="${post.content}">原来还有这么可爱又平价的小礼物！</p>
+                         <div class="Top-ContentBottomBar">
+                             <form action="#">
+                                 <input type="button" class="thumbs_button" onclick="" value="赞同">
+                                 <input type="button" class="thumbs_button" onclick="" value="反对">
+                                 <a href="">
+                                     <img th:src="@{/photo(id=${post.author_id})}" class="User">
+                                     <span th:text="${post.authorName}">username</span>
+                                 </a>
+                                 &nbsp;&nbsp;
+                                 <input type="button" class="DisplayButton-Comment" value="评论" th:onclick="DisplayComment([[${post.post_id}]])">
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+           </div>
+         </div>
+         <!-- 侧边栏 -->
+         <div class="SideBar">
+             <div class="MenuBlock">
+                 <ul>
+                     <li>
+                         <a href="">回答问题</a>
+                     </li>
+                     <li>
+                         <a th:href="@{/write}">写文章</a>
+                     </li>
+                     <li>
+                         <a href="">写想法</a>
+                     </li>
+                 </ul>
+             </div>
+             <div class="Card">
+                 <h3 style="margin: 0;padding: 20px;">分类</h3>
+                 <ul style="margin: 0;">
+                     <li>
+                         <a href="">游戏</a>
+                     </li>
+                     <li>
+                         <a href="">生活</a>
+                     </li>
+                     <li>
+                         <a href="">学习</a>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+     </div>
+ </main>
+
+ <script type="text/javascript">
+     function displaytext(id) {
+         var loc="#"+id;
+         $(loc).toggle();
+     }
+     function  DisplayComment(id){
+         var url="[[@{/post}]]";
+         url+="?id=";
+         url+=id;
+         location.href=encodeURI(url);
+     }
+
+ </script>
+</body>
+</html>

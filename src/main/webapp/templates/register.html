@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title> 注册 </title>
+
+    <script th:src="@{/js/jquery.min.js}" ></script>
+    <script th:src="@{/js/afquery.js}" ></script>
+    <link rel="stylesheet" th:href="@{/css/common.css?v=1.0}" />
+    <link rel="stylesheet" th:href="@{/css/main.css?v=1.0}" />
+    <!-- layer.js 对话框API -->
+    <script th:src="@{/layer/layer.js}" ></script>
+
+    <style>
+
+        .registerContainer{
+            margin-top: 50px;
+            width: 500px;
+            height: 600px;
+            background-color:white;
+            line-height: 20px;
+            text-align: center;
+            border: 1px solid rgba(187, 187, 187, 100);
+            border-radius: 5px;
+            box-shadow: 10px 10px 5px #888888;
+        }
+        body{
+            background-image:url("[[@{/img/background.png}]]");
+            background-repeat:no-repeat;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<div class="registerContainer center">
+    <div class='form' style='padding: 40px;'>
+        <div class='pad' style='margin-bottom: 30px;font-size:110%'>
+            新 用 户 注 册
+        </div>
+        <div class='pad'>
+            <input class='userID' type='number' placeholder="账号" required>
+        </div>
+        <div class='pad'>
+            <input class='name' type='text' placeholder="用户名" required>
+        </div>
+        <div class='pad'>
+            <input class='sex' type='text' placeholder="性别" list="choice" required>
+            <datalist id="choice">
+                <option value="男"></option>
+                <option value="女"></option>
+            </datalist>
+        </div>
+        <div class='pad' >
+            <input class='birth' type='date' placeholder="生日" required>
+        </div>
+        <div class='pad'>
+            <input class='tel' type='tel' placeholder="电话" onchange="my.checkPhone()"  required>
+        </div>
+        <div class='pad'>
+            <input class='password' type='password' placeholder="输入密码" required>
+        </div>
+        <div class='pad'>
+            <input class='password2' type='password' placeholder="再次输入密码" onblur="my.checkRepeat()"  required>
+        </div>
+        <div class="pad">
+            <input type='file' class='file' style='display:none' />
+
+            <button onclick='my.upload()'> 上传图片 </button> <br><br>
+
+        </div>
+
+        <div class="pad" style="height: 35px;">
+            <img th:src="@{/code}" th:id="identity"  style="width:100px;">
+            <input type="button"  value="更换验证码" onclick="my.change()" id="btn"
+                   style="font-size: 14px;position: relative;top: -7px" >
+        </div>
+        <div class="pad" style="position: relative;left: 17px">
+            <input class="code" type="text" placeholder="请输入验证码">
+            <input type="button" value="验证" onclick="my.verify()"
+                   style="font-size: 14px;position: relative;left: -43px">
+        </div>
+        <div class='pad' >
+            <button class='primary' onclick='my.register()'> 注 册 </button>
+        </div>
+    </div>
+    <div class='preview'  onload="my.init()" style="width: 220px;height: 270px;text-align: center;  position:relative;left: 600px;top:-300px;">
+        <img src='' id="preview" width="200px" height="250px" alt=""  style="border: 0px;display: none" >
+    </div>
+</div>
+
+
+
+</body>
+
+<script>
+    var my = {};
+    var isrigh=false;
+    var pwOK=false;
+    function phoneFun(phones){
+        var myreg = /^[1][3,4,5,7,8,9][0-9]{9}$/;
+        if (!myreg.test(phones)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // 判断是否为电话号
+    function telFun(tels){
+        var myreg = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+        if (!myreg.test(tels)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    my.checkPhone=function ()
+    {
+        var telNode=$(".tel");
+        var tel=telNode.val().trim();
+        if(!telFun(tel)&&!phoneFun(tel))
+        {
+            layer.msg ('电话格式错误',{
+                    time:1000,
+                    end:function (){
+                        //清空
+                        telNode.val("");
+                    }
+                }
+            );
+
+        }
+    }
+    //改变验证码
+    my.change=function ()
+    {
+        var des='[[@{/code}]]';
+        document.getElementById('identity').src=des+"?ts="+new Date().getTime();
+
+    }
+    //验证
+    my.verify= function ()
+    {
+        var req = {};
+        req.code = $('.form .code').val().trim();
+        Af.rest('[[@{/code.do}]]', req, function(data){
+            isrigh=true;
+            layer.msg ('正确',{
+                time:1000
+            })
+        },function (data1,data2){
+            layer.msg ('验证错误',{
+                time:1000,
+                end: function(){
+                    isrigh=false;
+                    my.change();
+                }
+            })
+        })
+    }
+    //搜索
+    my.search=function ()
+    {
+        var req={};
+
+        req.keyWord=$('.search .search-info').val().trim();
+        alert(req.keyWord);
+        Af.rest('[[@{/book/search}]]', req, function(data){
+                location.href='[[@{/book/list}]]';
+            }
+        )
+    }
+    my.checkRepeat=function ()
+    {
+        var pw1=$(".password").val().trim();
+        var pw2=$(".password2").val().trim();
+        if(pw1!=pw2){
+            layer.msg('两密码不一致', {
+                time: 1000,
+                end: function () {
+                   pwOK=false;
+                }
+            });
+        }
+        else{
+           pwOK=true;
+        }
+    }
+    //上传文件
+    var up = new AfUploader();
+    up.setButton('.file');  // 指定<file>元素
+    up.setUploadUrl('[[@{/photo/upload.do}]]');
+    up.processEvent = function(event)
+    {
+        if(event == 'progress')
+        {
+            $('.note').html(this.progress + '%');
+        }
+        else if(event == 'complete')
+        {
+
+            var result = JSON.parse(this.response);
+            var imageUrl = result.data.url;
+            $('.preview img').attr('src', imageUrl);
+           document.getElementById('preview').style.display="block";
+        }
+    };
+
+    // 是否允许上传,10M
+    up.beforeUpload = function(){
+        if(this.file.size > 10*1000000)
+        {
+            alert("文件太大!");
+            return false;
+        }
+        return true;
+    };
+
+    my.upload = function(){
+        // 选择文件，并上传
+        up.openFileDialog();
+    }
+    my.init=function (){
+        document.getElementById('preview').style.display="none";
+    }
+    my.register=function (){
+        if(isrigh==true&&pwOK) {
+            var req={};
+            req.id = $('.form .userID').val().trim();
+            req.name = $('.form .name').val().trim();
+            req.sex = $('.form .sex').val().trim();
+            req.birth = $('.form .birth').val().trim();
+            req.tel = $('.form .tel').val().trim();
+            req.password = $('.form .password').val().trim();
+            Af.rest('[[@{/register.do}]]', req, function (data) {
+                layer.msg('注册成功', {
+                    time: 1000,
+                    end: function () {
+                        location.href = '[[@{/index}]]';
+                    }
+                })
+            },function (error,reason){
+                layer.msg (reason,{
+                    time:1000,
+                    end: function(){
+                        isrigh=false;
+                        my.change();
+                    }
+                })
+            })
+        }
+        else {
+            if(!isrigh)
+                layer.msg ('请输入验证码',{
+                        time:1000,
+                        end:function (){
+
+                        }
+                    }
+                );
+             else if(!pwOK)
+            {
+                layer.msg ('请输入密码',{
+                        time:1000,
+                        end:function (){
+
+                        }
+                    }
+                );
+            }
+        }
+
+    }
+</script>
+
+</html>

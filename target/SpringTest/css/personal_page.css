@@ -1,0 +1,224 @@
+
+/* */
+/* */
+#content{
+    width: 80%;
+    margin: 0 auto;
+}
+#content_header{
+    width: 90%;
+    height: 382px;
+    background: gray;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+#content_header_bg_1{
+    width: 100%;
+    height: 240px;
+    background: url(../css_img/background1.jpg);
+    background-size: 100% 240px;
+    display: block;
+}
+#content_header_bg_2{
+    width: 100%;
+    height: 240px;
+    background: url(../css_img/background2.jpg);
+    background-size: 100% 240px;
+    display: none;
+}
+#content_header_person{
+    width: 100%;
+    height: 142px;
+    background: white;
+    padding-bottom: 10px;
+}
+#profile_main{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 1000px;
+}
+#profile_mainColumn{
+    width: 70%;
+    height: 1000px;
+    background-color: white;
+    float: left;
+}
+#profile_sideColumn{
+    width: 29%;
+    height: 1000px;
+    float: right;
+}
+#head_portrait{
+    width: 168px;
+    height: 168px;
+    background: rgba(128, 128, 128, 0.7);
+    position: absolute;
+    left: 15%;
+    top: 237px;
+}
+
+/*以下为上传头像部分css内容*/
+.btn {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #0781f3a9;
+    display: block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.upload {
+    float: left;
+    position: relative;
+}
+
+.upload_pic {
+    display: block;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    border-radius: 5px;
+}
+/*到此结束*/
+
+/*编辑个人资料*/
+#edit_profile{
+    text-align: right;
+    padding: 20px;
+}
+#edit_profile input{
+    width: 150px;
+    height: 40px;
+    border: 1px solid;
+    background-color: white;
+    color:  #0781f3;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+/*到此结束*/
+
+#personal_id{
+    width: 100%;
+}
+
+#personal_id h2{
+    padding-top: 20px;
+    margin-left: 200px;
+    margin-top: 0;
+}
+
+#profile_main_header{
+    width: 100%;
+    display: flex;
+}
+.profile_main_header_1{
+    flex: 1;
+    padding: 10px;
+}
+.profile_main_header_1 :hover {
+    color: #0781f3;
+}
+
+.main_header{
+    margin-left: 10;
+    width: 80%;
+    height: 30px;
+    border: none;
+    background-color:white;
+    color: black;
+    font-size: 20px;
+}
+#line{
+    width: 100%;
+}
+
+#card_following{
+    width: 100%;
+    background: white;
+    display: none;
+}
+#card_following input:not([type=submit]) {
+    width: 100%;
+    height: 42px;
+    border: none;
+    border-bottom: 1px rgba(0, 0, 0, .1) solid;
+    outline: none;
+    font-size: 14px;
+}
+#card_following input[type=submit] {
+    width: 100%;
+    height: 36px;
+    border: none;
+    background-color: #0781f3;
+    color: white;
+    margin-top: 30px;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.card_myself{
+    display: flex;
+}
+
+.card_myself p{
+    width: 100%;
+    height: 42px;
+    border: none;
+    border-bottom: 1px rgba(0, 0, 0, .1) solid;
+    outline: none;
+    font-size: 14px;
+    padding: 20px;
+}
+.change_bg_button{
+    width: 10%;
+    height: 36px;
+    border: none;
+    background-color: #0781f3;
+    color: white;
+    margin-top: 30px;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+#main_answers{
+    display: block;
+}
+#main_asks{
+    display: none;
+}
+#main_collections{
+    display: none;
+}
+#main_following{
+    display: none;
+}
+.main_list{
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 0;
+}
+.content_1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+#content_answer{
+    font-size: 16px;
+    margin-left: 15px;
+}
+.footer_content{
+    color: gray;
+    font-size: 12px;
+    text-decoration: none;
+}
